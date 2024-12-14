@@ -9,7 +9,6 @@ function App() {
 
   useEffect(() => {
     CapacitorApp.addListener("appUrlOpen", (event) => {
-      alert("URL opened: " + event.url);
       setLastUrl(event.url);
       setLastUrlDate(new Date());
       setCounter((prev) => prev + 1);
@@ -21,7 +20,7 @@ function App() {
       <div className="card">
         <p>Last URL: {lastUrl}</p>
         <p>Last event date: {lastUrlDate?.toString()}</p>
-        <p>Count: {counter}</p>
+        <p>Did it work?: {counter > 0 ? "YES IT WORKED" : "NOPE"}</p>
       </div>
     </>
   );
