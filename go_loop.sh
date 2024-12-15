@@ -16,8 +16,8 @@ for i in $(seq 1 $COUNT); do
   else
     RESULTS_ARRAY+=("F")
   fi
+  echo
 done
 
-echo
 echo -n "Results: "
 echo "${RESULTS_ARRAY[@]}" | sed 's/ //g'

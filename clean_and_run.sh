@@ -18,8 +18,8 @@ rm -rf ios/capacitor-cordova-ios-plugins
 xcrun simctl uninstall $TARGET org.watchduty.capmessagebugrepro
 
 # build
-yarn
-yarn build
+yarn -s
+yarn -s build
 
 # run
 npx cap run ios --target $TARGET
