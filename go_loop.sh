@@ -2,6 +2,8 @@
 
 # set -e
 
+caffeinate -s -w $$ &
+
 TARGET=$1
 COUNT=$2
 
@@ -16,4 +18,6 @@ for i in $(seq 1 $COUNT); do
   fi
 done
 
+echo
+echo -n "Results: "
 echo "${RESULTS_ARRAY[@]}" | sed 's/ //g'

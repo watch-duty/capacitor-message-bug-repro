@@ -43,7 +43,3 @@ sh go_loop.sh $DEVICE_ID <count>
 ```
 
 The script will print a series of "." and "F" characters. "F" means the bug prevented the delivery of the message, and "." indicates the message was successfully delivered.
-
-## Notes
-
-- Do not let your machine lock while the test is running. The Shortcut will not run while the computer is asleep.
