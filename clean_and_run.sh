@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+# set -x
 
 TARGET=$1
 
@@ -9,7 +9,7 @@ rm -rf node_modules
 rm -rf dist
 rm -rf ios/App/Pods
 rm -rf ios/DerivedData
-rf -rf ios/capacitor-cordova-ios-plugins
+rm -rf ios/capacitor-cordova-ios-plugins
 
 # uninstall app on target
 xcrun simctl uninstall $TARGET org.watchduty.capmessagebugrepro

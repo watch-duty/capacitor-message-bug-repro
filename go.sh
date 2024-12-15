@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 TARGET=$1
 
@@ -18,7 +18,7 @@ xcrun simctl io $TARGET screenshot /tmp/capmessagebug.png
 shortcuts run "Grab Text from Clipboard Image" --input-path /tmp/capmessagebug.png --output-path /tmp/capmessagebug.txt
 
 if grep "YES IT WORKED" /tmp/capmessagebug.txt; then
-  echo "SUCCESS"
+  exit 0
 else
-  echo "FAILURE"
+  exit 1
 fi
