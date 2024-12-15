@@ -163,18 +163,19 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
-"@capacitor/app@^6.0.0":
+"@capacitor/app@6.0.2":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-6.0.2.tgz#bf33d4e0882962f1f8a82481faad344053b0cd3f"
   integrity sha512-SiGTGgslK4TbWJVImCUL1odul7/YFkVfkYtAYS9AAEzQpxBECBeRnuN3FFBcfZ9eiN1XxFBFchhiwpxtx/c7yQ==
 
-"@capacitor/cli@^6.0.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-6.2.0.tgz#721a91421a98d4e4693df9d610210f1e23608de6"
-  integrity sha512-EWcXG39mZh35zrHhOqzN1ILeSyMRyEqWVtQDXqMGjCXYRH6b6p5TvyvLDN8ZNy26tbhI3i79gfrgirt+mNwuuw==
+"@capacitor/cli@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-6.1.2.tgz#b464c28f535cb4dcdf55de139cc07f302b2c98c1"
+  integrity sha512-HKCNGE0RP8U7aiEF2vg5wTivJROS8BVfu8a3yYJb1mRQvzv+czpmtHNsTWS/WukvwoxUjyjRmsNQSAACHfMTmQ==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.5"
     "@ionic/utils-fs" "^3.1.6"
+    "@ionic/utils-process" "^2.1.11"
     "@ionic/utils-subprocess" "2.1.11"
     "@ionic/utils-terminal" "^2.3.3"
     commander "^9.3.0"
@@ -191,17 +192,17 @@
     tslib "^2.4.0"
     xml2js "^0.5.0"
 
-"@capacitor/core@^6.0.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-6.2.0.tgz#b12b4e451b221972e2a41aa6fd1b7678e611e74d"
-  integrity sha512-B9IlJtDpUqhhYb+T8+cp2Db/3RETX36STgjeU2kQZBs/SLAcFiMama227o+msRjLeo3DO+7HJjWVA1+XlyyPEg==
+"@capacitor/core@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-6.1.2.tgz#a072e78b46693a6a47047cfc90d5f7cc48299fe9"
+  integrity sha512-xFy1/4qLFLp5WCIzIhtwUuVNNoz36+V7/BzHmLqgVJcvotc4MMjswW/TshnPQaLLujEOaLkA4h8ZJ0uoK3ImGg==
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/ios@^6.0.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-6.2.0.tgz#7cd4db0471d1cc270962061b64b28f79f3f89103"
-  integrity sha512-gisvZBIrKT1siiumgpLPY63HmJe69Ed/dOmfQQ+U1MIJmOR5gWGWvfO7QSj/FMatVZS4Xt/8jCoUgzDD1U6kSw==
+"@capacitor/ios@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-6.1.2.tgz#568e8b904ad0a6d42fb1b2cc239eab2735ccd5e5"
+  integrity sha512-HaeW68KisBd/7TmavzPDlL2bpoDK5AjR2ZYrqU4TlGwM88GtQfvduBCAlSCj20X0w/4+rWMkseD9dAAkacjiyQ==
 
 "@esbuild/aix-ppc64@0.24.0":
   version "0.24.0"
@@ -456,6 +457,14 @@
     debug "^4.0.0"
     tslib "^2.0.1"
 
+"@ionic/utils-object@2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@ionic/utils-object/-/utils-object-2.1.6.tgz#c0259bf925b6c12663d06f6bc1703e5dcb565e6d"
+  integrity sha512-vCl7sl6JjBHFw99CuAqHljYJpcE88YaH2ZW4ELiC/Zwxl5tiwn4kbdP/gxi2OT3MQb1vOtgAmSNRtusvgxI8ww==
+  dependencies:
+    debug "^4.0.0"
+    tslib "^2.0.1"
+
 "@ionic/utils-process@2.1.10":
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/@ionic/utils-process/-/utils-process-2.1.10.tgz#35686d933520064859368dd70e691c1ff545d5d9"
@@ -463,6 +472,18 @@
   dependencies:
     "@ionic/utils-object" "2.1.5"
     "@ionic/utils-terminal" "2.3.3"
+    debug "^4.0.0"
+    signal-exit "^3.0.3"
+    tree-kill "^1.2.2"
+    tslib "^2.0.1"
+
+"@ionic/utils-process@^2.1.11":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@ionic/utils-process/-/utils-process-2.1.12.tgz#17b05d66201859fe11f53b47be22b85aa90b9556"
+  integrity sha512-Jqkgyq7zBs/v/J3YvKtQQiIcxfJyplPgECMWgdO0E1fKrrH8EF0QGHNJ9mJCn6PYe2UtHNS8JJf5G21e09DfYg==
+  dependencies:
+    "@ionic/utils-object" "2.1.6"
+    "@ionic/utils-terminal" "2.3.5"
     debug "^4.0.0"
     signal-exit "^3.0.3"
     tree-kill "^1.2.2"
@@ -1747,7 +1768,7 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-react-dom@^18.3.1:
+react-dom@18.3.1:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
@@ -1760,7 +1781,7 @@ react-refresh@^0.14.2:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.2.tgz#3833da01ce32da470f1f936b9d477da5c7028bf9"
   integrity sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==
 
-react@^18.3.1:
+react@18.3.1:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
