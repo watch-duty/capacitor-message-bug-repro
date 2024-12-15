@@ -2,7 +2,7 @@
 
 # set -e
 
-caffeinate -s -w $$ &
+caffeinate -s -i -d -w $$ &
 
 TARGET=$1
 COUNT=$2
