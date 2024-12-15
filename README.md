@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# Capacitor message-passing bug
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+See: _link to issue when available_
 
-Currently, two official plugins are available:
+This is a minimal reproduction app to show a possible bug in the interaction between iOS and Capacitor that seems to result in some messages from Capacitor Natve -> JS being dropped.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The specific conditions that result in this bug in the field are when the app has been backgrounded long enough for iOS to kill its `WKWebView`'s `WebContent` process, but not so long as to terminate the native app itself.
 
-## Expanding the ESLint configuration
+As soon as Capacitor receives the [signal that its `WebContent` process](<https://developer.apple.com/documentation/webkit/wknavigationdelegate/webviewwebcontentprocessdidterminate(_:)>) was terminated, it reloads the `WKWebView`. It appears that this signal is received when the app is again foregrounded.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This app and associated scripts simulate iOS killing the `WebContent` process by terminating it explicitly after backgrounding the app.
 
-- Configure the top-level `parserOptions` property like this:
+The test steps are:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Launch the test app in the Simulator
+2. Background the test app by opening the "Files" app
+3. Explicitly kill the `WebContent` process
+4. Issue an `openurl` instruction that will result in the `@capacitor/app` plugin attempting to send a message with the URL to the JS side of the app
+5. Observe if the URL was delivered by OCR'ing the Simulator's screen
+
+## Instructions
+
+First, start an iOS simulator, and get its device ID. You can get its device ID by running:
+
+```sh
+xcrun simctl list devices booted
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Then, install the included MacOS Shortcut in the file "Grab Text from Image.shortcut" by double-clicking on it. The shortcut is used by the `go.sh` script below.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### One-off test
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+sh go.sh $DEVICE_ID
 ```
+
+Once the script terminates, the iOS program will either show "YES IT WORKED" on-screen, if the `openurl` message was delivered, or it will continue showing "NOPE".
+
+### N iterations test
+
+```sh
+sh go_loop.sh $DEVICE_ID <count>
+```
+
+The script will print a series of "." and "F" characters. "F" means the bug prevented the delivery of the message, and "." indicates the message was successfully delivered.
+
+## Notes
+
+- Do not let your

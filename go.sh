@@ -15,7 +15,7 @@ sleep 2
 xcrun simctl io $TARGET screenshot /tmp/capmessagebug.png
 
 # run ocr on it
-shortcuts run "Grab Text from Clipboard Image" --input-path /tmp/capmessagebug.png --output-path /tmp/capmessagebug.txt
+shortcuts run "Grab Text from Image" --input-path /tmp/capmessagebug.png --output-path /tmp/capmessagebug.txt
 
 if grep "YES IT WORKED" /tmp/capmessagebug.txt; then
   exit 0
