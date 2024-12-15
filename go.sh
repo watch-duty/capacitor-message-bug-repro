@@ -9,7 +9,7 @@ ITERATION=${3:-1}
 PNG_PATH=$OUTPUT_DIR/$ITERATION.png
 TXT_PATH=$OUTPUT_DIR/$ITERATION.txt
 
-rm -f /tmp/capmessagebug.*
+rm -f $PNG_PATH $TXT_PATH
 
 sh ./clean_and_run.sh $TARGET
 sleep 5
