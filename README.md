@@ -46,4 +46,4 @@ The script will print a series of "." and "F" characters. "F" means the bug prev
 
 ## Notes
 
-- Do not let your
+- Do not let your machine lock while the test is running. The Shortcut will not run while the computer is asleep.
