@@ -50,3 +50,10 @@ The summary results are printed as a series of `.` and `F` characters:
 
 - `.` means the test message was delivered, and the bug did not trigger
 - `F` means the test message was not delivered, showing the effects of the bug
+- `!`: expected text was not present in the Simulator screenshot, indicating some other test run failure
+
+Results are also output to a dated directory within `output/`, and will contain the following:
+
+- `package.json`, `capacitor.config.ts` - copies of the files from the repo root
+- `summary.txt` - a summary file of results
+- `<n>.png`, `<n>.txt` - the screenshot and the OCR'd text from each iteration
