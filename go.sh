@@ -13,14 +13,14 @@ rm -f $PNG_PATH $TXT_PATH
 
 if [ -z "$SKIP_BUILD" ]; then
   sh ./clean_and_run.sh $TARGET
-  sleep 5
 else
   # terminate and re-install the app from the local build
   xcrun simctl uninstall $TARGET org.watchduty.capmessagebugrepro
+  sleep 30
   xcrun simctl install $TARGET ios/DerivedData/$TARGET/Build/Products/Debug-iphonesimulator/App.app
   xcrun simctl launch $TARGET org.watchduty.capmessagebugrepro
-  sleep 5
 fi
+sleep 5
 
 sh ./try_repro.sh $TARGET
 sleep 2
