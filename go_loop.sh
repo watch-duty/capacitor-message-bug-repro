@@ -2,6 +2,8 @@
 
 # set -e
 
+. ./constants.sh
+
 caffeinate -s -i -d -w $$ &
 
 TARGET=$1
@@ -21,7 +23,7 @@ for i in $(seq 1 $COUNT); do
   if sh ./go.sh $TARGET $OUTPUT_DIR $i; then
     RESULTS_ARRAY+=(".")
   else
-    if [ $? -eq 1 ]; then
+    if [ $? -eq $EXIT_TEST_FAILED ]; then
       RESULTS_ARRAY+=("F")
     else
       RESULTS_ARRAY+=('!')
