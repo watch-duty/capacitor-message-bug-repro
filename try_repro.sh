@@ -15,7 +15,7 @@ if pgrep -P $(pgrep launchd_sim) 'com.apple.WebKit.WebContent'; then
   echo "ERROR: Failed to kill WebContent process, or more than one running"
   exit 1
 fi
-sleep 5
+sleep ${WEBCONTENT_KILL_TO_MESSAGE_INTERVAL_SECONDS:-5}
 
 if pgrep -P $(pgrep launchd_sim) 'com.apple.WebKit.WebContent'; then
   echo "ERROR: WebContent process restarted before expected"

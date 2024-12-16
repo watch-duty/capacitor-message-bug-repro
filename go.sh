@@ -20,7 +20,7 @@ if [ -z "$SKIP_BUILD" ]; then
 else
   # terminate and re-install the app from the local build
   xcrun simctl uninstall $TARGET org.watchduty.capmessagebugrepro
-  sleep ${SIMULATED_BUILD_SLEEP_SECONDS:-5}
+  sleep ${SIMULATED_BUILD_SLEEP_SECONDS:-0}
   xcrun simctl install $TARGET ios/DerivedData/$TARGET/Build/Products/Debug-iphonesimulator/App.app
   xcrun simctl launch $TARGET org.watchduty.capmessagebugrepro
 fi

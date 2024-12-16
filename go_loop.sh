@@ -17,8 +17,10 @@ echo
 
 mkdir -p $OUTPUT_DIR
 cp package.json capacitor.config.ts $OUTPUT_DIR
+env > $OUTPUT_DIR/env.txt
 
 for i in $(seq 1 $COUNT); do
+  echo
   echo "Iteration $i"
   if sh ./go.sh $TARGET $OUTPUT_DIR $i; then
     RESULTS_ARRAY+=(".")
@@ -28,10 +30,9 @@ for i in $(seq 1 $COUNT); do
     else
       RESULTS_ARRAY+=('!')
     fi
-  fi
-  
-  echo
+  fi;
 done
 
+echo
 echo "${RESULTS_ARRAY[@]}" | sed 's/ //g' > $OUTPUT_DIR/summary.txt
 cat $OUTPUT_DIR/summary.txt
