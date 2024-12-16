@@ -44,6 +44,8 @@ Since the bug appears to be racy, this script will run N iterations and print a 
 sh go_loop.sh $DEVICE_ID <count>
 ```
 
+Because the image OCR shortcut will only run if the machine is unlocked, the script runs `caffeinate` to keep the display on and machine awake.
+
 The summary results are printed as a series of `.` and `F` characters:
 
 - `.` means the test message was delivered, and the bug did not trigger
