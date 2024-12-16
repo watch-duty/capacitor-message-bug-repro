@@ -21,7 +21,11 @@ for i in $(seq 1 $COUNT); do
   if sh ./go.sh $TARGET $OUTPUT_DIR $i; then
     RESULTS_ARRAY+=(".")
   else
-    RESULTS_ARRAY+=("F")
+    if [ $? -eq 1 ]; then
+      RESULTS_ARRAY+=("F")
+    else
+      RESULTS_ARRAY+=('!')
+    fi
   fi
   
   echo

@@ -48,8 +48,8 @@ Because the image OCR shortcut will only run if the machine is unlocked, the scr
 
 The summary results are printed as a series of `.` and `F` characters:
 
-- `.` means the test message was delivered, and the bug did not trigger
-- `F` means the test message was not delivered, showing the effects of the bug
+- `.`: the test message was delivered, and the bug did not trigger
+- `F`: the test message was not delivered, showing the effects of the bug
 - `!`: expected text was not present in the Simulator screenshot, indicating some other test run failure
 
 Results are also output to a dated directory within `output/`, and will contain the following:
