@@ -6,7 +6,7 @@ This is a minimal reproduction app to show a possible bug in the interaction bet
 
 The specific conditions that result in this bug in the field are when the app has been backgrounded long enough for iOS to kill its `WKWebView`'s `WebContent` process, but not so long as to terminate the native app itself.
 
-As soon as Capacitor receives the [signal that its `WebContent` process](<https://developer.apple.com/documentation/webkit/wknavigationdelegate/webviewwebcontentprocessdidterminate(_:)>) was terminated, it reloads the `WKWebView`. It appears that this signal is received when the app is again foregrounded.
+As soon as Capacitor receives the [signal that its `WebContent` process](<https://developer.apple.com/documentation/webkit/wknavigationdelegate/webviewwebcontentprocessdidterminate(_:)>) was terminated, it reloads the `WKWebView`. It appears that this signal is received when the app is again foregrounded, and it would also appear that sometimes messages that sent to the JS app from the Native side can get lost.
 
 This app and associated scripts simulate iOS killing the `WebContent` process by terminating it explicitly after backgrounding the app.
 
@@ -34,12 +34,17 @@ Then, install the included MacOS Shortcut in the file "Grab Text from Image.shor
 sh go.sh $DEVICE_ID
 ```
 
-Once the script terminates, the iOS program will either show "YES IT WORKED" on-screen, if the `openurl` message was delivered, or it will continue showing "NOPE".
+Once the script terminates, the iOS program will either show "YES IT WORKED" on-screen, if the `openurl` message was delivered, or it will show "NOPE".
 
 ### N iterations test
+
+Since the bug appears to be racy, there is a script that will run N iterations and summarize the results at the end.
 
 ```sh
 sh go_loop.sh $DEVICE_ID <count>
 ```
 
-The script will print a series of "." and "F" characters. "F" means the bug prevented the delivery of the message, and "." indicates the message was successfully delivered.
+The summary results are represented by a series of `.` and `F` characters:
+
+- `.` means the test message was delivered, and the bug did not trigger
+- `F` means the test message was not delivered, showing the effects of the bug
