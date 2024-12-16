@@ -38,13 +38,13 @@ Once the script terminates, the iOS program will either show "YES IT WORKED" on-
 
 ### N iterations test
 
-Since the bug appears to be racy, there is a script that will run N iterations and summarize the results at the end.
+Since the bug appears to be racy, this script will run N iterations and print a summary of results:
 
 ```sh
 sh go_loop.sh $DEVICE_ID <count>
 ```
 
-The summary results are represented by a series of `.` and `F` characters:
+The summary results are printed as a series of `.` and `F` characters:
 
 - `.` means the test message was delivered, and the bug did not trigger
 - `F` means the test message was not delivered, showing the effects of the bug
