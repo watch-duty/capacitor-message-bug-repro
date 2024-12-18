@@ -39,6 +39,8 @@ xcrun simctl list devices booted
 
 Then, install the included MacOS Shortcut in the file `Grab Text from Image.shortcut` by double-clicking on it. The shortcut is used by the `go.sh` script below.
 
+The first run-through of the reproduction will require accepting some permissions in iOS. It is recommended to invoke `go.sh` (see below) one time to get through these dialogs before running a full automated test.
+
 ### One-off test
 
 ```sh
